@@ -20,16 +20,23 @@ h1 {
     margin: 0; /* Removes default margin */
 }
 
-/* Navigation Menu - Styles the top menu bar */
+/* Navigation Menu - Uses flexbox for responsiveness */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 nav ul {
     list-style: none; /* Removes bullet points */
     padding: 0;
+    margin: 0;
 }
 
-/* Styles each navigation link */
 nav ul li {
-    display: inline; /* Displays links in a horizontal line */
-    margin: 0 15px; /* Adds space between links */
+    display: inline-block; /* Keeps items horizontal */
+    margin: 10px; /* Adds spacing */
 }
 
 /* Styles the actual links in the navigation */
@@ -37,6 +44,8 @@ nav ul li a {
     color: white; /* White text color */
     text-decoration: none; /* Removes underline */
     font-size: 18px;
+    padding: 10px 15px;
+    display: block; /* Makes the links easier to click */
 }
 
 /* Changes link color on hover */
@@ -46,7 +55,7 @@ nav ul li a:hover {
 
 /* Main Content Section - Ensures padding for all pages */
 main {
-    padding: 80px 20px; /* Adds space between content and page edges */
+    padding: 40px 5%; /* Uses percentage-based padding for better scaling */
 }
 
 /* Info Sections - General styling for content boxes */
@@ -54,7 +63,7 @@ main {
     background: white; /* White background for content boxes */
     margin: 40px auto; /* Centers the section and adds more space */
     padding: 30px; /* Adds more padding inside the box */
-    max-width: 700px; /* Makes content box wider */
+    max-width: 80%; /* Uses percentage for scalability */
     border-radius: 8px; /* Rounds the corners */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds a light shadow */
     clear: both; /* Prevents text from wrapping around images */
@@ -70,8 +79,8 @@ main {
 /* Styles for images inside the image-section */
 .image-section img {
     display: block; /* Forces image to be on its own line */
-    max-width: 100%; /* Ensures the image does not overflow */
-    width: 300px; /* Default image size */
+    max-width: 90%; /* Ensures the image does not overflow */
+    width: auto; /* Auto-width for responsive scaling */
     height: auto; /* Keeps aspect ratio */
     border-radius: 5px; /* Rounds image corners slightly */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds shadow */
@@ -112,4 +121,59 @@ footer a {
 /* Footer link hover effect */
 footer a:hover {
     color: #ffcc00; /* Changes to yellow on hover */
+}
+
+/* 🌟 RESPONSIVE DESIGN: Adjustments for Smaller Screens */
+@media (max-width: 1024px) {
+    /* Make content sections smaller on tablets */
+    .info {
+        max-width: 90%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Reduce font size for smaller screens */
+    h1 {
+        font-size: 28px;
+    }
+
+    /* Stack navigation links vertically */
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Adds space between items */
+    }
+
+    /* Reduce section padding for smaller devices */
+    .info {
+        padding: 15px;
+    }
+
+    /* Adjust image size for smaller screens */
+    .image-section img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust styles for small phones */
+    h1 {
+        font-size: 24px;
+    }
+
+    /* Reduce section width for better mobile fit */
+    .info {
+        max-width: 95%;
+    }
+
+    /* Adjust footer text */
+    footer {
+        font-size: 14px;
+        padding: 10px;
+    }
 }
