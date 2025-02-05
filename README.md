@@ -1,0 +1,1 @@
+This repository is specifically designed to help my girlfriend place her portfolio online. It utilizes html and css for a simple clean web page that can display all of her artwork. I plan to publish it using git pages so I can access it online.
