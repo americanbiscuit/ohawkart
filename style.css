@@ -13,10 +13,14 @@ body {
 /* 🔝 HEADER STYLES - Controls the Title & Navigation Menu */
 /* ========================================================= */
 header {
-    background-color: #333; /* Dark background color for the header */
-    color: white; /* White text for better contrast */
-    padding: 20px; /* Adds padding inside the header for spacing */
+    width: 100vw; /* Makes the header span the entire viewport width */
+    background-color: #333; /* Keeps the black color */
+    color: white;
+    padding: 20px;
+    margin: 0; /* Ensures no unwanted space around it */
+    box-sizing: border-box; /* Prevents padding from affecting width */
 }
+
 
 /* 📌 Styles the website title (Olivia Hawk) at the top */
 h1 {
