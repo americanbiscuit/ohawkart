@@ -192,12 +192,10 @@
 
     <section class="artist-statement">
         <h2>Artist Statement</h2>
-        <p>
-            My work examines how my small-town upbringing has shaped my perception of femininity’s beauty and burdens. Through painting and ceramics, I explore the societal constructs that define and constrain women, using visual language to challenge and reclaim these narratives.
-        </p>
-        <p>
-            In my paintings, I confront the patriarchal gaze head-on and create a discussion about its impact on the perception of female nudity.
-        </p>
+        <p>My work examines how my small-town upbringing has shaped my perception of femininity’s beauty and burdens. Through painting and ceramics, I explore the societal constructs that define and constrain women, using visual language to challenge and reclaim these narratives.</p>
+        <p>In my paintings, I confront the patriarchal gaze head on and create a discussion about its impact on the perception of female nudity. Subjects of desire—once deemed taboo in my hometown—are amplified through bold displays of skin and sugar. I enjoy drawing parallels between women's bodies and dessert, to make literal the way women are consumed by the male gaze and media. Yet, in response to this commodification, my newest series shifts toward depictions of female bonds—moments of serenity, vulnerability, and joy shared between women. Still nude, still decadent, but free from the weight of objectification, these works emphasize companionship over consumption.</p>
+        <p>In my ceramics, I honor the traditionally feminine craft of crochet, elevating it beyond its utilitarian function. My large-scale installations transform this intimate, generational skill into something monumental—holding space for these works as testaments of artistry and devotion rather than mere domestic craft. I have noticed within my own familial relationship to crochet that women's creative labor is often dismissed as functional rather than celebrated for its time, skill, and beauty. By translating crochet into permanent ceramic forms and displaying them in a gallery setting, I place these women—and their craft—on a figurative and literal pedestal.</p>
+        <p>At its core, my work is a conversation about perception, value, and agency. Whether through paint or clay, I seek to challenge inherited narratives and create space for femininity that is seen, honored, and made powerful as it always has and should be.</p>
     </section>
 
 </main>
@@ -213,23 +211,19 @@
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
-    // Toggle Mobile Menu
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Open Lightbox
     featuredImage.addEventListener('click', () => {
         lightbox.classList.add('active');
         lightboxImage.src = featuredImage.src;
     });
 
-    // Zoom Toggle on Image
     lightboxImage.addEventListener('click', () => {
         lightboxImage.classList.toggle('zoomed');
     });
 
-    // Close Lightbox
     lightbox.addEventListener('click', (e) => {
         if (e.target !== lightboxImage) {
             lightbox.classList.remove('active');
