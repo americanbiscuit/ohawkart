@@ -2,130 +2,59 @@
 /* 🌍 GLOBAL STYLES - Applies to the Entire Page */
 /* ========================================================= */
 body {
-    font-family: Arial, sans-serif; /* Sets the font style for the entire website */
-    text-align: center; /* Centers text elements */
-    margin: 0; /* Removes default margin (prevents unwanted gaps around the page) */
-    padding: 0; /* Removes default padding */
-    background-color: #f4f4f4; /* Light gray background color */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
     width: 100%;
-    max-width: 100vw; /* Ensures nothing goes beyond the viewport width */
-    overflow-x: hidden; /* Prevents horizontal scrolling issues */
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 /* ========================================================= */
-/* 🔝 HEADER STYLES - Controls the Title & Navigation Menu */
+/* 🔝 GLOBAL HEADER STYLES */
 /* ========================================================= */
 header {
-    width: 100%; /* Makes the header span the entire viewport width */
-    max-width: 100vw; /*ensures no overflow issues*/
-    background-color: #333; /* Keeps the black color */
-    color: white;
-    padding: 90px 20px;
-    margin: 0; /* Ensures no unwanted space around it */
-    box-sizing: border-box; /* Prevents padding from affecting width */
-    min-height: 13vh; /* ✅ Header takes up 20% of the viewport height */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-
-/* 📌 Styles the website title (Olivia Hawk) at the top */
+/* 📌 Header Title Styling */
 h1 {
-    font-size: 36px; /* Large font size for visibility */
-    margin: 0; /* Removes default margin to keep it aligned properly */
+    font-size: 2.8rem; /* Larger header */
+    margin: 0;
+    padding: 0;
+    text-align: left;
 }
 
-/* ========================================================= */
-/* 📌 NAVIGATION MENU - Controls the Menu Bar at the Top */
-/* ========================================================= */
-nav {
-    display: flex; /* Uses flexbox to keep items aligned */
-    justify-content: center; /* Centers menu items horizontally */
-    align-items: center; /* Aligns items vertically */
-    flex-wrap: wrap; /* Allows wrapping if the screen is too small */
-}
-
-/* 📌 Removes default list styling (bullets, padding, etc.) */
+/* 📌 Navigation Menu Styling */
 nav ul {
-    list-style: none; /* Removes bullet points */
+    list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    gap: 15px;
 }
 
-/* 📌 Styles individual navigation links */
-nav ul li {
-    display: inline-block; /* Keeps items horizontal */
-    margin: 10px; /* Adds spacing between menu items */
-}
-
-/* 📌 Styles the navigation links (text) */
 nav ul li a {
-    color: white; /* White text */
-    text-decoration: none; /* Removes underlines */
-    font-size: 18px; /* Adjusts text size */
-    padding: 10px 15px; /* Increases clickable area for better usability */
-    display: block; /* Allows full padding to apply */
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* 📌 Changes navigation link color when hovered over */
 nav ul li a:hover {
-    color: #ffcc00; /* Turns yellow on hover */
-}
-
-/* ========================================================= */
-/* 📄 MAIN CONTENT SECTION - Controls Everything Below the Header */
-/* ========================================================= */
-main {
-    padding: 40px 5%; /* Adds padding around the content */
-    padding-bottom: 100px; /* ✅ ADDED: Extra bottom padding to create space above the footer */
-}
-
-/* ========================================================= */
-/* 📦 INFO SECTIONS - Controls the White Content Boxes */
-/* ========================================================= */
-.info {
-    background: white; /* White background to create contrast */
-    margin: 40px auto; /* Centers the section and adds space */
-    padding: 30px; /* Adds spacing inside each section */
-    max-width: 80%; /* Makes content box responsive (scales with screen) */
-    border-radius: 8px; /* Slightly rounds the edges */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow for a floating effect */
-    clear: both; /* Ensures text doesn’t wrap around images */
-}
-
-/* ========================================================= */
-/* 🖼 IMAGE SECTION - Controls How Images Are Displayed */
-/* ========================================================= */
-.image-section {
-    text-align: center; /* Centers images and captions */
-    margin: 40px auto; /* Adds space above and below the section */
-    padding: 20px;
-}
-
-/* 📌 Styles for images inside the image-section */
-.image-section img {
-    display: block; /* Forces the image onto a new line */
-    max-width: 90%; /* Prevents the image from overflowing the screen */
-    width: auto; /* Adjusts width dynamically */
-    height: auto; /* Maintains aspect ratio */
-    border-radius: 5px; /* Slightly rounds the corners */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-    margin: 20px auto; /* Centers the image with spacing */
-}
-
-/* ✅ ADDED: Make the image smaller for large devices (desktops & tablets) */
-@media (min-width: 1024px) {
-    .image-section img {
-        max-width: 50%; /* Reduces image size on larger screens */
-    }
-}
-
-/* 📌 Ensures captions under images display properly */
-.image-section .caption {
-    font-size: 16px;
-    color: #555;
-    margin-top: 10px;
+    background-color: #555;
 }
 
 /* ========================================================= */
@@ -133,87 +62,19 @@ main {
 /* ========================================================= */
 footer {
     width: 100%;
-    max-width: 100vw; /* Ensure it doesn’t extend beyond the screen */
+    max-width: 100vw;
     background-color: #333;
     color: white;
     padding: 15px;
     text-align: center;
-    box-sizing: border-box; /* Prevents extra padding from increasing the width */
+    box-sizing: border-box;
 }
 
-
-/* 📌 Keeps footer fixed at the bottom only if content is short */
-@media (min-height: 800px) {
-    footer {
-        position: fixed;
-        bottom: 0;
-    }
-}
-
-/* 📌 Styles links inside the footer */
 footer a {
-    color: #f4f4f4; /* Light gray text */
-    text-decoration: none; /* Removes underline */
+    color: #f4f4f4;
+    text-decoration: none;
 }
 
-/* 📌 Changes footer link color on hover */
 footer a:hover {
-    color: #ffcc00; /* Turns yellow when hovered over */
-}
-
-/* ========================================================= */
-/* 📱 RESPONSIVE DESIGN - Adjustments for Smaller Screens */
-/* ========================================================= */
-@media (max-width: 1024px) {
-    /* 📌 Make content sections slightly smaller on tablets */
-    .info {
-        max-width: 90%;
-        padding: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    /* 📌 Reduce font size for smaller screens */
-    h1 {
-        font-size: 28px;
-    }
-
-    /* 📌 Stack navigation links vertically */
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-    }
-
-    nav ul li {
-        margin: 5px 0; /* Adds space between menu items */
-    }
-
-    /* 📌 Reduce section padding for smaller devices */
-    .info {
-        padding: 15px;
-    }
-
-    /* 📌 Adjust image size for better mobile display */
-    .image-section img {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    /* 📌 Adjust styles for very small screens (like mobile phones) */
-    h1 {
-        font-size: 24px;
-    }
-
-    /* 📌 Reduce section width for better readability */
-    .info {
-        max-width: 95%;
-    }
-
-    /* 📌 Adjust footer text size */
-    footer {
-        font-size: 14px;
-        padding: 10px;
-    }
+    color: #ffcc00;
 }

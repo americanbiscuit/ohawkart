@@ -3,64 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>OHAWK ART</title>
-    <link rel="stylesheet" href="style.css"> <!-- Links the CSS file to apply styles -->
+    <title>OHAWK ART: Work</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 40px auto 0;
+            max-width: 800px;
+            cursor: zoom-in;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .artist-statement {
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: center;
+            color: #333;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .zoomed {
+            transform: scale(2);
+            cursor: zoom-out;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #f4f4f4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffcc00;
+        }
+    </style>
 </head>
 <body>
 
-<!-- Header Section: Contains the website title and navigation menu -->
 <header>
-    <h1>Olivia Hawk</h1> <!-- Name displayed at the top -->
+    <h1>Olivia Hawk</h1>
+    <div class="menu-toggle" id="menu-toggle">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <nav>
-        <ul>
-            <!-- Navigation links for different sections of the website -->
-            <li><a href="index.html">Home</a></li>
-            <li><a href="paintings.html">Paintings</a></li>
-            <li><a href="Sculptureshtml">Sculptures</a></li>
-            <li><a href="about.html">About my Work</a></li>
+        <ul id="nav-links">
+            <li><a href="index.html">Work</a></li>
+            <li><a href="works.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 </header>
 
-<!-- Main Content Section -->
 <main>
-    <!-- Social Media Section -->
-    <section class="info">
-        <h2>Social Media</h2>
-        <p>Find me on: <a href="https://instagram.com/ohawkart">Art Instagram</a></p>
+
+    <section>
+        <img src="packages/images/FullSizeRender(7).jpg" alt="Featured Artwork" class="featured-image" id="featuredImage">
     </section>
 
-    <!-- Image Section: Displays an image with a caption -->
-    <section class="image-section">
-        <h2>My Fav Picture</h2> <!-- Closing tag was missing -->
-        <img src="packages/images/olivia.jpg" alt="">
-        <p class="caption">A picture of my shayla</p> <!-- Added a paragraph for the caption -->
-    </section>
-
-    <!-- Location and Personal Information Section -->
-    <section class="info">
-        <h2>Missouri</h2>
-        <p>Olivia Mary-Grace Hawk is a beautiful woman. I love her so much, and I'm making her a website. She is based in Missouri, where she creates her paintings and ceramics. She currently attends UCM. </p>
-    </section>
-
-    <!-- Bio Section -->
-    <section class="info">
-        <h2>About Me</h2>
-        <p>This is my bio. I am passionate about ART.</p>
+    <section class="artist-statement">
+        <h2>Artist Statement</h2>
+        <p>
+            My work examines how my small-town upbringing has shaped my perception of femininity’s beauty and burdens. Through painting and ceramics, I explore the societal constructs that define and constrain women, using visual language to challenge and reclaim these narratives.
+        </p>
+        <p>
+            In my paintings, I confront the patriarchal gaze head-on and create a discussion about its impact on the perception of female nudity.
+        </p>
     </section>
 
 </main>
 
-<!-- Footer Section: Displays contact information -->
-<footer>
-    <p>
-        Contact me: 
-        <a href="mailto:omgh2003@gmail.com">omgh2003@gmail.com</a> | 
-        <a href="tel:+18164826718">Call: click here!</a>
-        <a href="sms:+18164826718">Text: (816)-482-6718</a>
-    </p>
-</footer>
+<div class="lightbox" id="lightbox">
+    <img src="" alt="Zoomed Artwork" id="lightboxImage">
+</div>
 
+<script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const featuredImage = document.getElementById('featuredImage');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    // Toggle Mobile Menu
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Open Lightbox
+    featuredImage.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImage.src = featuredImage.src;
+    });
+
+    // Zoom Toggle on Image
+    lightboxImage.addEventListener('click', () => {
+        lightboxImage.classList.toggle('zoomed');
+    });
+
+    // Close Lightbox
+    lightbox.addEventListener('click', (e) => {
+        if (e.target !== lightboxImage) {
+            lightbox.classList.remove('active');
+            lightboxImage.classList.remove('zoomed');
+        }
+    });
+</script>
+
+<footer>
+    <p>Find me on: <a href="https://instagram.com/ohawkart" target="_blank">@ohawkart</a></p>
+</footer>
 
 </body>
 </html>

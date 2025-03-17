@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHAWK ART: Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sort-section {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            text-align: center;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            cursor: zoom-in;
+            padding: 10px;
+        }
+
+        .caption {
+            margin-top: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #f4f4f4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Olivia Hawk</h1>
+    <div class="menu-toggle" id="menu-toggle">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <nav>
+        <ul id="nav-links">
+            <li><a href="index.html">Work</a></li>
+            <li><a href="works.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <section class="sort-section">
+        <label for="sortType">Sort by Type:</label>
+        <select id="sortType">
+            <option value="all">All</option>
+            <option value="ceramic">Ceramic</option>
+            <option value="painting">Oil Painting</option>
+        </select>
+
+        <label for="sortDate">Sort by Date:</label>
+        <select id="sortDate">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+        </select>
+    </section>
+
+    <section class="gallery-grid" id="artGallery">
+        <!-- Images will be dynamically rendered -->
+    </section>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+    <img src="" alt="Zoomed Artwork">
+</div>
+
+<footer>
+    <p>Find me on: <a href="https://instagram.com/ohawkart" target="_blank">@ohawkart</a></p>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = lightbox.querySelector('img');
+    const sortType = document.getElementById('sortType');
+    const sortDate = document.getElementById('sortDate');
+    const gallery = document.getElementById('artGallery');
+
+    const imagesData = [
+        { src: 'packages/images/FullSizeRender(4).jpg', alt: 'Self Portrait, oil paint on panel, 2025', type: 'painting', date: '2025-02-01' },
+        { src: 'packages/images/FullSizeRender(5).jpg', alt: 'Sweet Temptation 2, oil paint on stretched canvas, 2024', type: 'painting', date: '2024-10-10' },
+        { src: 'packages/images/FullSizeRender(6).jpg', alt: 'Sweet Temptation 1, oil paint on stretched canvas, 2024', type: 'painting', date: '2024-11-12' },
+        { src: 'packages/images/FullSizeRender(7).jpg', alt: 'Sweet Temptation, 2024', type: 'painting', date: '2024-12-15' },
+        { src: 'packages/images/FullSizeRender(8).jpg', alt: 'Sweet Temptation 3, oil paint on stretched canvas, 2024', type: 'painting', date: '2024-09-20' },
+        { src: 'packages/images/FullSizeRender(9).jpg', alt: 'Sweet Temptation 4, oil paint on stretched canvas, 2024', type: 'painting', date: '2024-08-25' },
+        { src: 'packages/images/IMG_0449.jpg', alt: 'Untitled, glazed stoneware, 2025', type: 'ceramic', date: '2025-02-10' },
+        { src: 'packages/images/IMG_0452.jpg', alt: 'Untitled, glazed stoneware, 2025', type: 'ceramic', date: '2025-02-12' },
+        { src: 'packages/images/IMG_0456.jpg', alt: 'Untitled, glazed stoneware, 2025', type: 'ceramic', date: '2025-02-15' },
+        {src: 'packages/images/claycro.jpeg', alt: 'Clay Crochet, slip-cast soaked granny squares and jump rings, 2023', type: 'ceramic', date: '2023-12-15' },
+        {src: 'packages/images/vases.jpeg', alt: 'Enclosed Form Vases, glazed stoneware, 2023', type: 'ceramic', date: '2023-12-14' }
+    ];
+
+    function renderGallery() {
+        const type = sortType.value;
+        const dateOrder = sortDate.value;
+
+        let filteredImages = imagesData.filter(image => type === 'all' || image.type === type);
+
+        filteredImages.sort((a, b) => {
+            return dateOrder === 'newest'
+                ? new Date(b.date) - new Date(a.date)
+                : new Date(a.date) - new Date(b.date);
+        });
+
+        gallery.innerHTML = '';
+
+        filteredImages.forEach(image => {
+            const item = document.createElement('div');
+            item.classList.add('gallery-item');
+
+            const imgElement = document.createElement('img');
+            imgElement.src = image.src;
+            imgElement.alt = image.alt;
+
+            const caption = document.createElement('p');
+            caption.textContent = image.alt;
+            caption.classList.add('caption');
+
+            imgElement.addEventListener('click', () => {
+                lightbox.classList.add('active');
+                lightboxImage.src = image.src;
+            });
+
+            item.appendChild(imgElement);
+            item.appendChild(caption);
+            gallery.appendChild(item);
+        });
+    }
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    lightbox.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+    });
+
+    sortType.addEventListener('change', renderGallery);
+    sortDate.addEventListener('change', renderGallery);
+
+    renderGallery();
+</script>
+
+</body>
+</html>

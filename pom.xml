@@ -1,0 +1,120 @@
+<!-- Root of the Maven project descriptor -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion> <!-- Defines Maven's POM version format -->
+
+  <!-- Inherit the Spring Boot parent project, which provides default configurations and plugins -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.2</version>  <!-- Ensure this is a stable Spring Boot version -->
+    <relativePath/> <!-- Lookup parent automatically (no need to specify location) -->
+  </parent>
+
+  <!-- Unique identifiers for the project -->
+  <groupId>com.olivia</groupId>  <!-- A reverse domain-style ID for the project -->
+  <artifactId>olivias-portfolio</artifactId>  <!-- The name of the project artifact -->
+  <version>1.0.0</version>  <!-- The version of the project -->
+  <packaging>jar</packaging>  <!-- Specifies this is a JAR (not WAR) project -->
+
+  <name>Olivia's Portfolio</name>  <!-- The project's display name -->
+  <description>Spring Boot-based portfolio site with admin authentication</description>  <!-- A short description -->
+
+  <!-- Define Java version compatibility -->
+  <properties>
+    <java.version>17</java.version> <!-- Java 17 is recommended for Spring Boot 3+ -->
+  </properties>
+
+  <!-- ======================= -->
+  <!-- ✅ Project Dependencies -->
+  <!-- ======================= -->
+  <dependencies>
+
+    <!-- ✅ Spring Boot Web (Enables REST controllers, Servlets, etc.) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- ✅ Spring Boot Security (Handles authentication & authorization) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <!-- ✅ Spring Boot JPA (For database interactions using Hibernate) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!-- ✅ MySQL Connector (Enables Spring Boot to connect to MySQL database) -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <scope>runtime</scope> <!-- Only needed at runtime, not during build -->
+    </dependency>
+
+    <!-- ✅ Thymeleaf (Template Engine for HTML views) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+
+    <!-- ✅ Thymeleaf Security Extras (Allows security checks in Thymeleaf templates) -->
+    <dependency>
+      <groupId>org.thymeleaf.extras</groupId>
+      <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+    </dependency>
+
+    <!-- ✅ Validation API (Ensures form input validation) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
+    <!-- ✅ Lombok (Reduces boilerplate code like Getters, Setters, Constructors) -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope> <!-- Not needed at runtime -->
+    </dependency>
+
+    <!-- ✅ Spring Boot DevTools (Allows auto-reloading during development) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional> <!-- Not included in production builds -->
+    </dependency>
+
+  </dependencies>
+
+  <!-- ============================= -->
+  <!-- ✅ Build and Plugin Section -->
+  <!-- ============================= -->
+  <build>
+    <plugins>
+
+      <!-- ✅ Spring Boot Maven Plugin (Allows us to package and run the Spring Boot app easily) -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <!-- ✅ Maven Compiler Plugin (Ensures correct Java version is used for compilation) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>17</source>  <!-- Use Java 17 -->
+          <target>17</target>  <!-- Compile for Java 17 -->
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
